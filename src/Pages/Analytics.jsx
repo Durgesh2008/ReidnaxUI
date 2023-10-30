@@ -24,12 +24,12 @@ const options = {
 };
 Chartjs.register(CategoryScale, LinearScale, BarElement);
 const Analytics = () => {
-  const [Data, setdata] = useState([]);
-  const [chartdata, setchartdata] = useState([]);
-  const [labels, setlabels] = useState([]);
+  
+
+  
   const [chart, setchart] = useState({
-    labels: labels,
-    datasets: [{ data: chartdata, borderWidth: 1 }],
+    labels: [],
+    datasets: [{ data: [], borderWidth: 1 }],
   });
   const [selected, setSelected] = useState("India");
   const [countries, setCountries] = useState([]);
@@ -39,7 +39,7 @@ const Analytics = () => {
   };
   const fetchdata = async () => {
     try {
-      console.log(selected);
+     
       const res = await axios.get(
         `${process.env.REACT_APP_HOST}/api/v1/chart/chatdata/${selected}`
       );
@@ -47,13 +47,13 @@ const Analytics = () => {
 
       if (resdata) {
        
-        setdata(resdata.data);
+       
         updateChartData(resdata.data);
       } else {
-        console.error("Response data is undefined.");
+        alert("Response data is undefined.");
       }
     } catch (error) {
-      console.error(error);
+    alert(error)
     }
   };
 
@@ -68,10 +68,10 @@ const Analytics = () => {
         // Check if resdata is defined before accessing its properties
         setCountries(resdata.distinctCountries);
       } else {
-        console.error("Response data is undefined.");
+        alert("Response data is undefined.");
       }
     } catch (error) {
-      console.error(error);
+     alert(error);
     }
   };
 
@@ -81,6 +81,7 @@ const Analytics = () => {
     data?.map((item) => {
       value.push(parseInt(item.Value));
       lab.push(item.Year);
+   // eslint-disable-next-line
     });
 
     setchart({
@@ -91,10 +92,12 @@ const Analytics = () => {
 
   useEffect(() => {
     fetchdata();
+     // eslint-disable-next-line
   }, [selected]);
 
   useEffect(() => {
     fetchCountries();
+     // eslint-disable-next-line
   }, []);
 
   const navigate = useNavigate();
@@ -103,6 +106,7 @@ const Analytics = () => {
     if (!success) {
       navigate("/login");
     }
+     // eslint-disable-next-line
   }, []);
 
   return (
@@ -116,9 +120,10 @@ const Analytics = () => {
         </label>
         <select
           onChange={HandleChange}
+          defaultValue={selected}
           className="bg-gray-100 border overflow-y-auto my-5 p-2  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[8%]  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
-          <option disabled selected>
+          <option disabled value={selected}>
             {selected}
           </option>
 
@@ -131,7 +136,7 @@ const Analytics = () => {
           })}
         </select>
       </div>
-      {console.log(chartdata)}
+     
       <div>
         <Bar data={chart} height={400} options={options} />
       </div>

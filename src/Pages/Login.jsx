@@ -98,7 +98,7 @@ useEffect(()=>{
              
               <button
                   type="submit"
-                  className="inline-block w-full text-center bg-[#19A5B1] font-inter  rounded  px-6 py-2 mt-5 mb-4 text-xs md:text-base font-medium capitalize leading-normal text-white  hover:shadow-btn__shadow   duration-500 ease-in transform active:scale-75 transition-transform"
+                  className="inline-block w-full text-center bg-[#19A5B1] font-inter  rounded  px-6 py-2 mt-5 mb-4 text-xs md:text-base font-medium capitalize leading-normal text-white  hover:shadow-btn__shadow   transform active:scale-75 transition-transform"
                 >
                   Login
                 </button>

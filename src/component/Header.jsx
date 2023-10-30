@@ -1,7 +1,7 @@
-import React, { useState, useContext,useEffect } from "react";
+import React, { useState} from "react";
 import { FaShopify } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-
+import logo from '../component/logo.png'
 
 const Header = () => {
   const [IsHambargerclick, setIsHambargerclick] = useState(false);
@@ -21,10 +21,8 @@ const navigate=useNavigate();
       <nav className="bg-white sticky top-0 z-10  border-gray-200 dark:bg-gray-900 shadow-lg ">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link to={"/"} className="flex items-center">
-            <FaShopify className="h-[20px] w-[20px]" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap uppercase font-poppins dark:text-white">
-              Shop
-            </span>
+            <img src={logo} alt="Logo" className="h-[40px] w-[40px]  transform active:scale-75 transition-transform" />
+            
           </Link>
 
         
@@ -62,16 +60,16 @@ const navigate=useNavigate();
              
                   <Link
                     to={"/analytics"}
-                    className="block font-inter py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent capitalize"
+                    className="block font-inter py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent capitalize  transform active:scale-75 transition-transform"
                   >
                    Dashboard
                   </Link>
                   {
-                    JSON.parse(localStorage.getItem('auth'))?.success ?<p onClick={logoutHandle}  className="block font-inter py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 cursor-pointer md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent capitalize">
+                    JSON.parse(localStorage.getItem('auth'))?.success ?<p onClick={logoutHandle}  className="block font-inter py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 cursor-pointer md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent capitalize  transform active:scale-75 transition-transform">
                       Logout
                     </p>:   <Link
                     to={"/login"}
-                    className="block font-inter py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent capitalize"
+                    className="block font-inter py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent capitalize  transform active:scale-75 transition-transform"
                   >
                     login
                   </Link>

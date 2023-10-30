@@ -3,33 +3,16 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Data = () => {
-  const [countries, setCountries] = useState([]);
-  const [Charts, setCharts] = useState([]);
+ 
   const [filtedData, setFilteredData] = useState([]);
-  const fetchCountries = async () => {
-    try {
-      const res = await axios.get(
-        `${process.env.REACT_APP_HOST}/api/v1/chart/allCountry`
-      );
-      const resdata = await res.data;
 
-      if (resdata) {
-        // Check if resdata is defined before accessing its properties
-        setCountries(resdata.distinctCountries);
-      } else {
-        console.error("Response data is undefined.");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
   const navigate=useNavigate();
 
   const fetchData=async()=>{
     try {
       const {data}=await axios.get(`${process.env.REACT_APP_HOST}/api/v1/chart/dataCountryWise`)
       handleFilteredData(data.data)
-      setCharts(data.data);
+    
     } catch (error) {
       console.log(error)
     }
@@ -53,12 +36,13 @@ const Data = () => {
    
   };
   useEffect(() => {
-    fetchCountries();
+  
     fetchData();
     let success = JSON.parse(localStorage.getItem("auth"))?.success;
     if (!success) {
       navigate("/login");
     }
+     // eslint-disable-next-line
   }, []);
 
   return (
