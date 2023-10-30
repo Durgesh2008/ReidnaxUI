@@ -1,5 +1,4 @@
 import React, { useState} from "react";
-import { FaShopify } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import logo from '../component/logo.png'
 

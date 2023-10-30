@@ -47,6 +47,7 @@ useEffect(()=>{
   if(success){
     navigate('/analytics')
   }
+   // eslint-disable-next-line
 },[])
 
   return (

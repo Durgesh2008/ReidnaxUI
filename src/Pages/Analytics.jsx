@@ -46,8 +46,6 @@ const Analytics = () => {
       const resdata = await res.data;
 
       if (resdata) {
-       
-       
         updateChartData(resdata.data);
       } else {
         alert("Response data is undefined.");
@@ -78,10 +76,11 @@ const Analytics = () => {
   const updateChartData = (data) => {
     let value = [];
     let lab = [];
+     // eslint-disable-next-line
     data?.map((item) => {
       value.push(parseInt(item.Value));
       lab.push(item.Year);
-   // eslint-disable-next-line
+  
     });
 
     setchart({
